@@ -77,7 +77,7 @@ end
 
   def down_vote 
     @story = Story.find(params[:id])
-    @story.unliked_by current_user 
+    @story.disliked_by current_user 
     respond_to do |format|
       format.js
       format.html  { redirect_to stories_path, notice: 'Thanks For Your Vote!' }

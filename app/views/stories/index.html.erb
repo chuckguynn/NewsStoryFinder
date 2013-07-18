@@ -31,9 +31,9 @@
           
           <% if current_user %>
             <div class="span1 well-small">
-              <p><strong>Vote</strong></p>
-              <p><%= link_to "<i class=\"icon-thumbs-up\"></i>".html_safe, up_vote_story_path(story), :method => 'post' %> <%= story.likes.size %></p>
-              <p><%= link_to "<i class=\"icon-thumbs-down\"></i>".html_safe, down_vote_story_path(story), :method => 'post' %> <%= story.dislikes.size %></p>
+              <p><strong>Votes  <%= story.likes.size %></strong></p>
+              <p><%= link_to "<i class=\"icon-thumbs-up\"></i>".html_safe, up_vote_story_path(story), :method => 'post' %></p>
+              <p><%= link_to "<i class=\"icon-thumbs-down\"></i>".html_safe, down_vote_story_path(story), :method => 'post' %></p>
             </div>
           <% else %>
                <div class="span1 well-small">

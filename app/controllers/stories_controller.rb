@@ -3,13 +3,22 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    if params[:category_id]
+    cat_name = Story.where(:category_id => params[:category_id])  
+    @stories = cat_name.order('created_at desc').page(params[:page]).per(5)
+    @categories = Category.all
+    else  
+    @stories = Story.order('created_at desc').page(params[:page]).per(5)
+    @categories = Category.all
+
+
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
     end
   end
+end
 
   # GET /stories/1
   # GET /stories/1.json
@@ -53,6 +62,26 @@ class StoriesController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def up_vote
+    @story = Story.find(params[:id])
+    @story.liked_by current_user
+    respond_to do |format|
+      format.js
+      format.html  { redirect_to stories_path, notice: 'Thanks For Your Vote!' }
+      format.json { render json: @stories }
+    end
+  end
+
+  def down_vote 
+    @story = Story.find(params[:id])
+    @story.disliked_by current_user 
+    respond_to do |format|
+      format.js
+      format.html  { redirect_to stories_path, notice: 'Thanks For Your Vote!' }
+      format.json { render json: @stories }
     end
   end
 

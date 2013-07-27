@@ -6,10 +6,15 @@ NewsStoryFinder::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                    controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  resources :stories
+  resources :stories do
+     member do
+        post 'up_vote'
+        post 'down_vote'
+       end
+     end
 
 
-  resources :categories
+  resources :categories 
 
   root to:'stories#index'
 

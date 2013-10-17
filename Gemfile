@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'devise'
@@ -10,6 +10,8 @@ gem 'settingslogic'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'kaminari'
 gem 'better_errors'
+gem 'paperclip', '~> 3.0'
+gem 'aws-sdk', '~> 1.5.7'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

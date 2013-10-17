@@ -3,5 +3,6 @@
 /log/*.log
 /tmp
 /bin
+/public
 .DS_Store
 config/newsstoryfinder.yml

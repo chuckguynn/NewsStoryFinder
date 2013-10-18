@@ -14,7 +14,7 @@ NewsStoryFinder::Application.routes.draw do
      end
 
 
-  resources :categories 
+  resources :categories
 
   root to:'stories#index'
 

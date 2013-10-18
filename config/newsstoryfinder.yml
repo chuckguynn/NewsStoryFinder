@@ -1,0 +1,8 @@
+email:
+  from: nsf@example.com
+
+omniauth:
+  enabled: false
+  providers:
+    - { name: 'twitter', app_key: 'yN5et73qFe8xlrIVe2Z5g', app_secret: '2pdRmvKkXSbAPfRTyHsiU7P2Rz29K5vk81bfms3m0' }
+    # - { name: 'facebook', app_key: '', app_secret: '' }

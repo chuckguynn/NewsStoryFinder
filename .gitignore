@@ -5,5 +5,4 @@
 /bin
 /public
 *.DS_Store
-config/newsstoryfinder.yml
 /config/s3.yml

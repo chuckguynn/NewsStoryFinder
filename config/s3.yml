@@ -1,0 +1,9 @@
+development:
+  access_key_id: AKIAJRGSFB2AED3WQLJA
+  secret_access_key: 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
+  bucket: news-story-finder
+
+production:
+  access_key_id: AKIAJRGSFB2AED3WQLJA
+  secret_access_key: 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
+  bucket: news-story-finder

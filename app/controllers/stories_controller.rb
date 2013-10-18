@@ -4,10 +4,10 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     if params[:category_id]
-    cat_name = Story.where(:category_id => params[:category_id])  
+    cat_name = Story.where(:category_id => params[:category_id])
     @stories = cat_name.order('created_at desc').page(params[:page]).per(5)
     @categories = Category.all
-    else  
+    else
     @stories = Story.order('created_at desc').page(params[:page]).per(5)
     @categories = Category.all
 
@@ -52,7 +52,7 @@ end
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(params[:story])
+    @story = Story.create(params[:story])
     @story.user_id = current_user.id
     respond_to do |format|
       if @story.save
@@ -75,9 +75,9 @@ end
     end
   end
 
-  def down_vote 
+  def down_vote
     @story = Story.find(params[:id])
-    @story.disliked_by current_user 
+    @story.disliked_by current_user
     respond_to do |format|
       format.js
       format.html  { redirect_to stories_path, notice: 'Thanks For Your Vote!' }

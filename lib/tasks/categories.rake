@@ -4,13 +4,10 @@ namespace :categories do
   task :populate => :environment do
  ["Local", "Sports", "Weather", "Crime", "Business", "Government", "Lifestyles", "Events"].each do |name|
       Category.create({
-        name: name, 
+        name: name,
         }
       ) unless Category.where(name: name).exists?
     end
-    puts "Updated Categories" 
+    puts "Updated Categories"
   end
 end
-
-
-     

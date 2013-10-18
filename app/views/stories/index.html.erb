@@ -39,9 +39,9 @@
           <% else %>
                <div class="span1 well-small">
                  <p>Sign Up</br>to Vote!</p>
+                 <%= image_tag story.image.url(:thumb) %>
                </div>
             <% end %>
-
             <div class="span9 well-small">
               <strong><%= link_to story.title, story %></strong>
               <p><%= story.description %></p>

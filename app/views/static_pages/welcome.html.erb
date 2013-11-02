@@ -1,2 +1,44 @@
-<h1>StaticPages#welcome</h1>
-<p>Find me in app/views/static_pages/welcome.html.erb</p>
+<h1>Welcome to News Story Finder</h1>
+<div class="well well-small">
+  <h4>Your source for news story ideas</h4>
+  <%= link_to "See Latest Stories!", stories_path %>
+</div>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+<% slide = [] %>
+<% @stories.each do |story| %>
+<% slide << story %>
+<% end %>
+
+  <div class="carousel-inner">
+
+    <div class="item active">
+      <%= image_tag slide[0].image(:large) %>
+
+      <div class="carousel-caption">
+        <h3 class="brand"><%= link_to slide[0].title, slide[0] %></h3>
+        <p><%= slide[0].category.name %></p>
+      </div>
+    </div>
+
+    <% slide[1...10].each do |si| %>
+       <div class="item">
+          <%= image_tag si.image(:large) %>
+
+          <div class="carousel-caption">
+            <h3 class="brand"><%= link_to si.title, si %></h3>
+            <p><%= si.category.name %></p>
+          </div>
+        </div>
+
+     <% end %>
+   </div>
+
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>

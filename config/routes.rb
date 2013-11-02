@@ -16,7 +16,7 @@ NewsStoryFinder::Application.routes.draw do
 
   resources :categories
 
-  root to:'stories#index'
+  root to:'static_pages#welcome'
 
 
   # The priority is based upon order of creation:

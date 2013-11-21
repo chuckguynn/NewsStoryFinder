@@ -1,0 +1,40 @@
+.well.well-large
+  .row
+    %h1.span8 Story Ideas
+    %a= link_to "Submit a News Story Idea", new_story_path, class: "btn btn-info span2"
+%div
+  %ul.nav.nav-tabs
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Category
+        %b.caret
+      %ul.dropdown-menu
+        %li= link_to "All", stories_path
+        - @categories.each do |category|
+          %li= link_to category.name, stories_path(:category_id => category.id)
+- @stories.each do |story|
+  .well.well-small
+    .status
+      .row
+        - if current_user
+          .span1.well-small
+            %p
+              %strong
+                Votes  #{story.likes.size}
+            %p= link_to "<i class=\"icon-thumbs-up\"></i>".html_safe, up_vote_story_path(story), :method => 'post'
+            %p= link_to "<i class=\"icon-thumbs-down\"></i>".html_safe, down_vote_story_path(story), :method => 'post'
+            = image_tag story.image.url(:thumb)
+        - else
+          .span1.well-small
+            %p
+              Sign Up
+              to Vote!
+            = image_tag story.image.url(:thumb)
+        .span9.well-small
+          %strong= link_to story.title, story
+          %p= story.description
+        .span1.well-small
+          %p
+            %strong Posted:
+          %p= time_ago_in_words(story.created_at) + " ago"
+= paginate @stories

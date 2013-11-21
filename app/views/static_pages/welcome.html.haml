@@ -1,0 +1,24 @@
+%h1 Welcome to News Story Finder
+.well.well-small
+  %h4 Your source for news story ideas
+  = link_to "See Latest Stories!", stories_path
+#carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+  - slide = []
+  - @stories.each do |story|
+    - slide << story
+  .carousel-inner
+    .item.active
+      = image_tag slide[0].image(:large)
+      .carousel-caption
+        %h3.brand= link_to slide[0].title, slide[0]
+        %p= slide[0].category.name
+    - slide[1...10].each do |si|
+      .item
+        = image_tag si.image(:large)
+        .carousel-caption
+          %h3.brand= link_to si.title, si
+          %p= si.category.name
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+    %span.glyphicon.glyphicon-chevron-left
+  %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+    %span.glyphicon.glyphicon-chevron-right

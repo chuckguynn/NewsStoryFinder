@@ -1,0 +1,19 @@
+%p#notice= notice
+%h4 Your Story
+.well
+  %p
+    %b Title:
+    = @story.title
+  %p
+    %b Description:
+    = @story.description
+  %p
+    %b Category:
+    = @story.category.name
+  %p
+    %b
+      Votes Total: #{@story.likes.size}
+  = image_tag @story.image.url(:medium)
+  = link_to 'Edit', edit_story_path(@story)
+  |
+  \#{link_to 'Back', stories_path}

@@ -1,0 +1,15 @@
+%p#notice= notice
+.header
+  %h3
+    = current_user.username
+    Story's
+- current_user.stories.each do |story|
+  .well.well-small
+    %strong= story.title
+    |
+    \#{link_to time_ago_in_words(story.created_at) + " ago", story}
+    %br/
+    = link_to 'Edit', edit_story_path(story), params: :id
+    |
+    \#{link_to 'Remove', story, method: :delete, data: { confirm: 'Are you sure?' }}
+%h5= link_to "Edit Your Account", edit_user_registration_path

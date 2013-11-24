@@ -11,7 +11,8 @@
         .container
           %a.brand{:href => "/"} NewsStoryFinder
           %ul.navv.nav.pull-left.divider-vertical
-            %li= link_to "Panama City Florida", stories_path
+            - if params[:search]
+              %li= link_to params[:search], "#"
           %ul.nav.pull-right
             - if user_signed_in?
               %li.divider-vertical= link_to current_user.username, static_pages_home_path

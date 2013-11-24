@@ -14,6 +14,8 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
 gem 'haml', '~> 3.1.8'
 gem 'ruby_parser'
+gem 'geocoder'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

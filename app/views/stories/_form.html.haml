@@ -18,8 +18,16 @@
   .field
     = collection_select(:story, :category_id, @categories, :id, :name, {:prompt => false })
     %br/
-    .field
-      = f.hidden_field :user_id
+  .field
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .field
+    = f.label :state
+    %br/
+    = f.select :state, options_for_select(us_states)
+  .field
+    = f.hidden_field :user_id
   = f.file_field :image
   .actions
     = f.submit

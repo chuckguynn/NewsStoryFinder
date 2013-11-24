@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
   acts_as_votable
-  attr_accessible :category_id, :description, :title, :user_id
+  attr_accessible :category_id, :description, :title, :user_id, :latitude, :longitude, :city, :state
   belongs_to :category
   belongs_to :user
 
@@ -15,4 +15,11 @@ class Story < ActiveRecord::Base
   },
   :storage => :s3,
   :s3_credentials => "#{Rails.root}/config/s3.yml"
+
+  geocoded_by :address
+  after_validation :geocode
+
+  def address
+    [city, state].compact.join(', ')
+  end
 end

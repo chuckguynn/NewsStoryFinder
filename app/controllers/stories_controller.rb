@@ -3,22 +3,26 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    if params[:category_id]
-    cat_name = Story.where(:category_id => params[:category_id])
-    @stories = cat_name.order('created_at desc').page(params[:page]).per(5)
-    @categories = Category.all
+    if params[:search].present?
+      @searches = Story.near(params[:search], 50, :order => :distance).page(params[:page]).per(5)
     else
-    @stories = Story.order('created_at desc').page(params[:page]).per(5)
-    @categories = Category.all
+      @searches = Story.order('created_at desc').page(params[:page]).per(5)
+    end
 
-
+    if params[:category_id]
+      cat_name = @searches.where(:category_id => params[:category_id])
+      @stories = cat_name
+      @categories = Category.all
+    else
+      @stories = @searches
+      @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
+      end
     end
   end
-end
 
   # GET /stories/1
   # GET /stories/1.json

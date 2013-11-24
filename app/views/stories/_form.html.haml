@@ -25,7 +25,7 @@
   .field
     = f.label :state
     %br/
-    = f.text_field :state
+    = f.select :state, options_for_select(us_states)
   .field
     = f.hidden_field :user_id
   = f.file_field :image

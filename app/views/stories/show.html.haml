@@ -11,6 +11,9 @@
     %b Category:
     = @story.category.name
   %p
+    %b Location:
+    = @story.address
+  %p
     %b
       Votes Total: #{@story.likes.size}
   = image_tag @story.image.url(:medium)

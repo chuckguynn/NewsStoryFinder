@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
   acts_as_votable
-  attr_accessible :category_id, :description, :title, :user_id
+  attr_accessible :category_id, :description, :title, :user_id, :latitude, :longitude
   belongs_to :category
   belongs_to :user
 
